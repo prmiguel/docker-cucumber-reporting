@@ -1,6 +1,6 @@
 FROM maven:3.8.4-eclipse-temurin-8
 
-ARG VERSION
+ARG VERSION 5.6.2
 ENV MAVEN_CUCUMBER_REPORTING_VERSION ${VERSION}
 
 ENV PROJECT_NAME "Default Cucumber Reporting"
