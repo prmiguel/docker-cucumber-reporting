@@ -14,7 +14,7 @@ WORKDIR ${CUCUMBER_REPORTING_HOME}
 COPY pom.xml .
 COPY jsonReports jsonReports
 
-RUN mvn install
+RUN /usr/bin/mvn install
 RUN rm -rf target & \
     rm -rf jsonReports & \
     rm -rf cucumber-html-reports
