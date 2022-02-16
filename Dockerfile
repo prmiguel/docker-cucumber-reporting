@@ -1,0 +1,22 @@
+FROM maven:3.8.4-eclipse-temurin-8
+
+ARG VERSION
+ENV MAVEN_CUCUMBER_REPORTING_VERSION ${VERSION}
+
+ENV PROJECT_NAME "Default Cucumber Reporting"
+ENV CUCUMBER_REPORTING_HOME "/cucumber-reporting"
+ENV OUTPUT_DIRECTORY "${CUCUMBER_REPORTING_HOME}"
+ENV CUCUMBER_HTML "${CUCUMBER_REPORTING_HOME}/cucumber-html-reports"
+ENV INPUT_DIRECTORY "${CUCUMBER_REPORTING_HOME}"
+
+WORKDIR ${CUCUMBER_REPORTING_HOME}
+
+COPY pom.xml .
+
+RUN mvn install
+RUN rm -rf target & \
+    rm -rf cucumber-html-reports
+
+COPY jsonReports .
+
+VOLUME [ "${CUCUMBER_HTML}" ]
