@@ -12,9 +12,11 @@ ENV INPUT_DIRECTORY "${CUCUMBER_REPORTING_HOME}"
 WORKDIR ${CUCUMBER_REPORTING_HOME}
 
 COPY pom.xml .
+COPY jsonReports jsonReports
 
 RUN mvn install
 RUN rm -rf target & \
+    rm -rf jsonReports & \
     rm -rf cucumber-html-reports
 
 VOLUME [ "${CUCUMBER_HTML}" ]
