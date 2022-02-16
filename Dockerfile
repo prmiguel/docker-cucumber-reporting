@@ -17,6 +17,7 @@ RUN mvn install
 RUN rm -rf target & \
     rm -rf cucumber-html-reports
 
-COPY jsonReports .
-
 VOLUME [ "${CUCUMBER_HTML}" ]
+
+ENTRYPOINT [ "mvn" ]
+CMD [ "verify" ]
