@@ -19,5 +19,5 @@ RUN rm -rf target & \
 
 VOLUME [ "${CUCUMBER_HTML}" ]
 
-ENTRYPOINT [ "mvn" ]
+ENTRYPOINT [ "/usr/bin/mvn" ]
 CMD [ "verify" ]
